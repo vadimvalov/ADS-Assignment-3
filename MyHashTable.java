@@ -65,9 +65,24 @@ public MyHashTable(int M) {
         return null;
     }
 
-        public V remote(K key) {
-
+    public V remove(K key) {
+        int index = hash(key);
+        HashNode<K, V> current = chainArray[index];
+        HashNode<K, V> prev = null;
+        while (current != null) {
+            if (current.key.equals(key)) {
+                if (prev == null) {
+                    chainArray[index] = current.next;
+                } else {
+                    prev.next = current.next;
+                }
+                size--;
+                return current.value;
+            }
+            current = current.next;
         }
+        return null;
+    }
 
         public boolean contains(V value) {
         for (int i = 0; i < chainArray.length; i++) {
