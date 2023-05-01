@@ -12,19 +12,20 @@ public class MyHashTable<K, V> {
         public String toString() {
             return "{" + key + " " + value + "}";
         }
+    }
 
         private HashNode<K, V>[] chainArray; // or Object[]
         private int M = 11; // default number of chains
         private int size;
 
-public MyHashTable() { 
+    public MyHashTable() { 
     this.chainArray = new HashNode<K,V>(key, value);
     //
- }
+    }
 
 public MyHashTable(int M) { 
     this.chainArray = new.HashNode<K,V>(key,value);
-    //
+    this.M = M;
  }
 
         private int hash(K key) {
@@ -36,12 +37,24 @@ public MyHashTable(int M) {
             return Math.abs(hash) % M;
         }
 
-        public void put(K key, V value) {
-
+       public void put(K key, V value) {
+        int index = hash(key);
+        HashNode<K, V> current = chainArray[index];
+        while (current != null) {
+            if (current.key.equals(key)) {
+                current.value = value;
+                return;
+            }
+            current = current.next;
         }
+        HashNode<K, V> newNode = new HashNode<>(key, value);
+        newNode.next = chainArray[index];
+        chainArray[index] = newNode;
+        size++;
+    }
 
         public V get(K key) {
-
+            
         }
 
         public V remote(K key) {
@@ -55,5 +68,5 @@ public MyHashTable(int M) {
         public K getKey(V value) {
 
         }
-    }
+    
 }
