@@ -26,13 +26,19 @@ public class Test {
         //     System.out.println("No student with this ID" + rand);
         // }
 
+        // Student s1 = new Student("A");
+
+        // MyHashTable<Test, Student> table2 = new MyHashTable<>();
+        // table2.put(new Test(1), s1);
+
+        // System.out.println(table2.get(new Test(1))); // output "A"
+        // table2.remove(new Test(1));
+        // System.out.println(table2.get(new Test(1))); // output "null"
+
         Student s1 = new Student("A");
-
-        MyHashTable<Test, Student> table2 = new MyHashTable<>();
-        table2.put(new Test(1), s1);
-
-        System.out.println(table2.get(new Test(1))); // output "A"
-        table2.remove(new Test(1));
-        System.out.println(table2.get(new Test(1))); // output "null"
+        
+        MyHashTable<Test, Student> table3 = new MyHashTable<>();
+        table3.put(new Test(1), s1);
+        System.out.println(table3.getKey(s1).toString()); // output "1"
     }
 }
