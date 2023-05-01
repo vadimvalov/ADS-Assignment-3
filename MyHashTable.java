@@ -55,8 +55,15 @@ public MyHashTable(int M) {
     }
 
         public V get(K key) {
-
+        HashNode<K, V> current = chainArray[hash(key)];
+        while (current != null) {
+            if (current.key.equals(key)) {
+                return current.value;
+            }
+            current = current.next;
         }
+        return null;
+    }
 
         public V remote(K key) {
 
