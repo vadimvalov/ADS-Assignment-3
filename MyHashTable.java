@@ -1,5 +1,6 @@
 public class MyHashTable<K, V> {
     private class HashNode<K, V> {
+        private HashNode<K, V> next;
         private K key;
         private V value;
 
@@ -54,7 +55,7 @@ public MyHashTable(int M) {
     }
 
         public V get(K key) {
-            
+
         }
 
         public V remote(K key) {
@@ -62,8 +63,18 @@ public MyHashTable(int M) {
         }
 
         public boolean contains(V value) {
-
+        for (int i = 0; i < chainArray.length; i++) {
+            HashNode<K, V> current = chainArray[i];
+            while (current != null) {
+                if (current.value.equals(value)) {
+                    return true;
+                }
+                current = current.next;
+            }
         }
+        return false;
+    }
+
 
         public K getKey(V value) {
 
