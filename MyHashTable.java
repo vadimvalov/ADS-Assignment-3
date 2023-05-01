@@ -80,6 +80,7 @@ public class MyHashTable<K, V> {
                 size--;
                 return current.value;
             }
+            prev = current;
             current = current.next;
         }
         return null;
